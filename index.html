@@ -269,12 +269,10 @@
         .page.hero {
             background: linear-gradient(135deg, #0a0805 0%, #1a1410 50%, #0f0d0a 100%);
             background-image: 
-                url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=800&fit=crop'),
-                linear-gradient(135deg, rgba(10, 8, 5, 0.94) 0%, rgba(26, 20, 16, 0.94) 50%, rgba(15, 13, 10, 0.94) 100%),
-                radial-gradient(circle at 15% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 85% 70%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
-            background-size: cover, cover, cover, cover;
-            background-position: center, center, 15% 30%, 85% 70%;
+                url('https://images.unsplash.com/photo-1517836357463-d25ddfcbf042?w=1200&h=800&fit=crop'),
+                linear-gradient(135deg, rgba(10, 8, 5, 0.93) 0%, rgba(26, 20, 16, 0.93) 50%, rgba(15, 13, 10, 0.93) 100%);
+            background-size: cover, cover;
+            background-position: center, center;
             background-attachment: fixed;
             text-align: center;
             position: relative;
@@ -287,7 +285,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.35) 100%);
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
             pointer-events: none;
             z-index: 0;
         }
@@ -1260,7 +1258,7 @@
             }, 1200);
         }
 
-        // Keyboard navigation - allow space in form inputs
+        // Keyboard navigation only - allow space in form inputs
         document.addEventListener('keydown', (e) => {
             // Don't prevent space if user is typing in an input or textarea
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
@@ -1280,14 +1278,35 @@
             }
         });
 
-        // Allow wheel scroll to reach footer page
+        // Scroll to footer - requires very substantial scroll (1000+ pixels accumulated)
+        let scrollAccumulation = 0;
+        let lastScrollTime = 0;
+        
         window.addEventListener('wheel', (e) => {
             if (isTransitioning) return;
             
-            // Only trigger page change if we're trying to go forward from last content page
-            if (currentPageIndex === pages.length - 2 && e.deltaY > 0) {
-                e.preventDefault();
-                goToPage(currentPageIndex + 1);
+            // Only on the last content page (Legacy = page 7)
+            if (currentPageIndex === 7) {
+                const now = Date.now();
+                
+                // Reset accumulation if user stops scrolling for 1000ms
+                if (now - lastScrollTime > 1000) {
+                    scrollAccumulation = 0;
+                }
+                
+                lastScrollTime = now;
+                
+                // Only count downward scrolls
+                if (e.deltaY > 0) {
+                    scrollAccumulation += e.deltaY;
+                    
+                    // Require 1000+ pixels of scroll to jump to footer
+                    if (scrollAccumulation >= 1000) {
+                        e.preventDefault();
+                        goToPage(8);
+                        scrollAccumulation = 0;
+                    }
+                }
             }
         }, { passive: false });
 
