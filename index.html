@@ -267,7 +267,15 @@
 
         /* ===== HERO PAGE ===== */
         .page.hero {
-            background: #0a0805;
+            background: linear-gradient(135deg, #0a0805 0%, #1a1410 50%, #0f0d0a 100%);
+            background-image: 
+                url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=800&fit=crop'),
+                linear-gradient(135deg, rgba(10, 8, 5, 0.94) 0%, rgba(26, 20, 16, 0.94) 50%, rgba(15, 13, 10, 0.94) 100%),
+                radial-gradient(circle at 15% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 70%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
+            background-size: cover, cover, cover, cover;
+            background-position: center, center, 15% 30%, 85% 70%;
+            background-attachment: fixed;
             text-align: center;
             position: relative;
         }
@@ -279,7 +287,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 60% 40%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.35) 100%);
+            pointer-events: none;
             z-index: 0;
         }
 
@@ -294,7 +303,7 @@
             font-size: 0.7rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--accent-gold);
+            color: #d4af37 !important;
             font-weight: 700;
             margin-bottom: 1.5rem;
             opacity: 1;
@@ -306,14 +315,14 @@
             font-weight: 700;
             line-height: 1.0;
             margin-bottom: 1.2rem;
-            color: var(--accent-gold);
+            color: #ffffff;
             letter-spacing: -2px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .hero-subtitle {
             font-size: 1.1rem;
-            color: #ffffff;
+            color: #ffffff !important;
             max-width: 700px;
             margin: 0 auto 2rem;
             line-height: 1.75;
@@ -458,6 +467,16 @@
             font-size: 2.5rem;
             margin-bottom: 0.8rem;
             display: block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-sage) 100%);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.8rem;
         }
 
         .service-list {
@@ -691,7 +710,65 @@
             transform: translateY(0);
         }
 
-        /* ===== NAV DOTS ===== */
+        .testimonial {
+            background: var(--primary-light);
+            padding: 2rem;
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 0;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .testimonial:hover {
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-author {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-top: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-title {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .testimonial-stars {
+            color: var(--accent-gold);
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--border-subtle) 100%);
+            border: 2px solid var(--border-subtle);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
         .nav-dots {
             position: fixed;
             right: 3rem;
@@ -783,8 +860,10 @@
             <li><a href="#" onclick="closeMenu(); goToPage(1); return false;">Philosophy</a></li>
             <li><a href="#" onclick="closeMenu(); goToPage(2); return false;">Spaces & Design</a></li>
             <li><a href="#" onclick="closeMenu(); goToPage(3); return false;">Elite Team</a></li>
-            <li><a href="#" onclick="closeMenu(); goToPage(4); return false;">Wellness</a></li>
-            <li><a href="#" onclick="closeMenu(); goToPage(5); return false;">Legacy</a></li>
+            <li><a href="#" onclick="closeMenu(); goToPage(4); return false;">Virtual Clients</a></li>
+            <li><a href="#" onclick="closeMenu(); goToPage(5); return false;">Youth Performance</a></li>
+            <li><a href="#" onclick="closeMenu(); goToPage(6); return false;">Testimonials</a></li>
+            <li><a href="#" onclick="closeMenu(); goToPage(7); return false;">Legacy</a></li>
         </ul>
         <button class="inquiry-button" onclick="closeMenu(); openInquiry();">Begin Design</button>
     </nav>
@@ -836,39 +915,13 @@
             <!-- SPACES & DESIGN -->
             <section class="page content-page">
                 <div class="page-content">
-                    <h2>What We Do</h2>
-                    <p>Your health is managed by six coordinated professionals. We handle everything from training programming to nutrition protocols, recovery optimization, sleep management, biomarker tracking, and weekly accountability. Your only job: show up and execute.</p>
+                    <h2>Wellness Spaces & Design</h2>
+                    <p style="color: var(--accent-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; margin-bottom: 1.5rem;">Coming Soon</p>
+                    <p>Custom design your complete wellness environment. We partner with elite vendors who handle the full design-to-buildout process start to finish. From concept through delivery and setup—everything arrives at your door ready to transform into your performance sanctuary.</p>
 
-                    <div class="grid-3">
-                        <div class="card">
-                            <h3>Training Direction</h3>
-                            <p>Custom programs designed for your goals. Progressive protocols. Measurable strength. Sport-specific optimization when needed.</p>
-                        </div>
-                        <div class="card">
-                            <h3>Nutrition Protocols</h3>
-                            <p>Advanced whole-food nutrition optimized by biomarkers. We handle meal planning and supplementation. Food as medicine.</p>
-                        </div>
-                        <div class="card">
-                            <h3>Recovery Systems</h3>
-                            <p>Sleep optimization, stress management, mobility work, soft tissue protocols. Your body adapts during recovery—we maximize it.</p>
-                        </div>
-                        <div class="card">
-                            <h3>Biomarker Tracking</h3>
-                            <p>Comprehensive blood work and metrics guide protocol adjustments. Data-driven optimization every step.</p>
-                        </div>
-                        <div class="card">
-                            <h3>Weekly Accountability</h3>
-                            <p>Regular oversight ensuring every system integrates and compounds results forward.</p>
-                        </div>
-                        <div class="card">
-                            <h3>Space Design (Optional)</h3>
-                            <p>If needed, we design and build premium training spaces tailored to your protocols and goals.</p>
-                        </div>
-                    </div>
-
-                    <div class="highlight-box">
-                        <h3>One Integrated System</h3>
-                        <p>Your professional team coordinates across every domain. Training informs nutrition. Sleep supports recovery. Biomarkers guide adjustments. Everything works together.</p>
+                    <div class="highlight-box" style="margin-top: 2rem;">
+                        <h3>Comprehensive Design Services</h3>
+                        <p>Space assessment • Premium design blueprints • Vendor coordination • Equipment specification • Recovery modality integration • Full buildout management • White-glove delivery & installation</p>
                     </div>
                 </div>
             </section>
@@ -881,102 +934,158 @@
 
                     <div class="grid-3">
                         <div class="card">
-                            <div class="card-icon">💪</div>
+                            <div class="card-icon">P</div>
                             <h3>Performance Coach</h3>
                             <h4>Training Direction</h4>
                             <p>Programs designed for your goals. Progressive. Measurable. Integrated with your entire health system.</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon">🥗</div>
+                            <div class="card-icon">N</div>
                             <h3>Nutrition Specialist</h3>
                             <h4>Fuel Systems</h4>
                             <p>Advanced whole-food protocols optimized by biomarkers. Food as medicine. Nutrient density engineered for performance.</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon">❄️</div>
+                            <div class="card-icon">R</div>
                             <h3>Recovery Expert</h3>
                             <h4>Adaptation Systems</h4>
-                            <p>Sleep optimization, stress management, mobility, soft tissue protocols. Your body adapts during recovery—we maximize it.</p>
+                            <p>Sleep optimization, stress management, structural integration, mobility, soft tissue protocols. Your body adapts during recovery—we maximize it.</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon">📊</div>
+                            <div class="card-icon">B</div>
                             <h3>Biomarker Analyst</h3>
                             <h4>Data Direction</h4>
                             <p>Comprehensive blood work and metrics tracking. Data guides every protocol adjustment. Numbers don't lie.</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon">🎯</div>
+                            <div class="card-icon">A</div>
                             <h3>Accountability Director</h3>
                             <h4>Implementation</h4>
                             <p>Weekly oversight. Real relationship. Someone who knows your goals and keeps you committed.</p>
                         </div>
-                        <div class="card">
-                            <div class="card-icon">🤝</div>
-                            <h3>Integration Lead</h3>
-                            <h4>Coordination</h4>
-                            <p>Ensures every specialist communicates. No silos. No conflicting advice. One unified system.</p>
-                        </div>
                     </div>
 
                     <div class="highlight-box">
-                        <h3>Coordinated Excellence</h3>
-                        <p>Your team architecture ensures consistency. Training informs nutrition. Sleep guides recovery. Biomarkers optimize protocols. Every specialist knows what the others are doing.</p>
+                        <h3>One Integrated System</h3>
+                        <p>Your professional team coordinates across every domain. Training informs nutrition. Sleep supports recovery. Biomarkers guide adjustments. Everything works together.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- WELLNESS -->
+            <!-- VIRTUAL CLIENTS -->
             <section class="page content-page">
                 <div class="page-content">
-                    <h2>The Investment</h2>
-                    <p>Complete health management by six coordinated professionals. You get expert oversight across training, nutrition, recovery, sleep, biomarkers, and accountability. Your only responsibility: show up and execute.</p>
+                    <h2>Elite Network. Anywhere.</h2>
+                    <p>Virtual training is one of our most popular offerings. We've built a network of elite trainers across the country—all trained to our standard. No matter where you are, you get the same level of expertise, programming precision, and accountability.</p>
 
                     <div class="grid-2">
                         <div class="card">
-                            <h3>Training & Programming</h3>
-                            <ul class="service-list">
-                                <li>Custom protocols</li>
-                                <li>Progressive programming</li>
-                                <li>Sport-specific training</li>
-                                <li>Measurable strength</li>
-                                <li>Functional mastery</li>
-                            </ul>
+                            <div class="card-icon">G</div>
+                            <h3>Nationwide Network</h3>
+                            <p>Elite trainers connected to our team. Same standard. Same expertise. Same results—delivered virtually.</p>
                         </div>
                         <div class="card">
-                            <h3>Nutrition & Optimization</h3>
-                            <ul class="service-list">
-                                <li>Whole-food protocols</li>
-                                <li>Meal planning</li>
-                                <li>Supplementation</li>
-                                <li>Biomarker optimization</li>
-                                <li>Food as medicine</li>
-                            </ul>
+                            <div class="card-icon">S</div>
+                            <h3>Forte Standard</h3>
+                            <p>Every trainer in our network goes through All In University. Continuous education. Continuous elevation of their craft.</p>
                         </div>
                         <div class="card">
-                            <h3>Recovery & Adaptation</h3>
-                            <ul class="service-list">
-                                <li>Sleep optimization</li>
-                                <li>Stress management</li>
-                                <li>Mobility protocols</li>
-                                <li>Soft tissue work</li>
-                                <li>Nervous system regulation</li>
-                            </ul>
+                            <div class="card-icon">O</div>
+                            <h3>Our Oversight</h3>
+                            <p>We design all programs. We maintain quality. You get world-class training delivered to your home.</p>
                         </div>
                         <div class="card">
-                            <h3>Results & Accountability</h3>
-                            <ul class="service-list">
-                                <li>Biomarker tracking</li>
-                                <li>Performance metrics</li>
-                                <li>Weekly check-ins</li>
-                                <li>Protocol adjustments</li>
-                                <li>Continuous optimization</li>
-                            </ul>
+                            <div class="card-icon">Y</div>
+                            <h3>Your Trainer</h3>
+                            <p>Work 1:1 with trainers who understand movement quality, program architecture, and progressive overload.</p>
                         </div>
                     </div>
 
                     <div class="highlight-box">
-                        <h3>Complete Peace of Mind</h3>
-                        <p>Your entire health system is managed and optimized by elite professionals. No decisions. No confusion. Only transformation. (Optional: space design and buildout available if needed.)</p>
+                        <h3>Become Part of Our Network</h3>
+                        <p>Are you an elite trainer ready to elevate your craft? Apply to join the Forte network and deliver premium training to clients across the country under our standard.</p>
+                        <button class="cta-primary" onclick="openTrainerApp()" style="margin-top: 1rem;">Apply Now</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- YOUTH PERFORMANCE & COMMUNITY -->
+            <section class="page content-page">
+                <div class="page-content">
+                    <h2>Youth Performance & Community</h2>
+                    <p>We invest in the next generation. Elite athletes deserve elite coaching. Through select community locations, we offer small group classes and private 1v1 training for serious young athletes ready to compete at the highest level.</p>
+
+                    <div class="grid-2">
+                        <div class="card">
+                            <div class="card-icon">G</div>
+                            <h3>Small Group Classes</h3>
+                            <p>Elite coaching in small group settings at select locations. Progressive strength, functional movement, and performance optimization designed for young athletes.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">P</div>
+                            <h3>Private 1v1 Training</h3>
+                            <p>Personalized athlete development. Sport-specific programming. Individual attention to movement quality, progression, and competitive readiness.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">C</div>
+                            <h3>Community Impact</h3>
+                            <p>Building elite youth through accessible training at partner locations. Creating the next generation of committed athletes.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">E</div>
+                            <h3>Elite Standards</h3>
+                            <p>Same coaching philosophy. Same movement standards. Same commitment to developing serious athletes from the ground up.</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Developing Serious Athletes</h3>
+                        <p>Young athletes who demand excellence deserve coaching that matches that commitment. We develop strength, movement quality, sport-specific skills, and the mindset required to compete at elite levels.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TESTIMONIALS -->
+            <section class="page content-page">
+                <div class="page-content">
+                    <h2>Elite Clients Speak</h2>
+                    <p>Transformation defined by those who experience it.</p>
+
+                    <div class="grid-2">
+                        <div class="testimonial">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-text">"They've eliminated all the guesswork. My training, nutrition, sleep, everything is coordinated. I've never felt stronger or more confident."</p>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-text">"Forte isn't a gym. It's a complete system. The level of expertise and integration is what separates them from everyone else in the industry."</p>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-text">"After years of injury, they brought me back to functional strength. The attention to movement quality and recovery protocols is exceptional."</p>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-text">"This is what premium wellness management looks like. Every detail is considered. Every system is optimized. Results speak for themselves."</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 1.5rem;">
+                        <div class="testimonial" style="background: transparent; border: none; padding: 0;">
+                            <div class="testimonial-stars" style="color: white; margin-bottom: 0.8rem;">★★★★★</div>
+                            <p class="testimonial-text" style="color: rgba(255, 255, 255, 0.98); font-size: 0.95rem; line-height: 1.8;">"The transformation in my son and daughter has been remarkable. We've worked with sports coaches who did the bare minimum and hired other trainers, but there's a massive difference when professionals prioritize movement quality and actually build progressive programs. That's where the real value is. It's completely changed how I evaluate who trains my kids—it won't just be anyone anymore."</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-2" style="margin-top: 1.5rem;">
+                        <div class="testimonial">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-text">"I thought all training was the same because everyone works out. I was completely wrong. The difference between my high school coach's approach and Forte's coaching is night and day. They taught me proper form, progression, and WHY we do things a certain way. It's made me a completely different athlete."</p>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-text">"My team coach had us doing exercises, but nobody explained movement quality or building real strength. Training with Forte opened my eyes to what actual coaching looks like. Now I know what to look for. I'm confident my younger siblings are being taught correctly and not building poor movement patterns that will limit them."</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -989,22 +1098,22 @@
 
                     <div class="grid-2">
                         <div class="card">
-                            <div class="card-icon">👥</div>
+                            <div class="card-icon">C</div>
                             <h3>Elite Community</h3>
                             <p>Connected with others who demand excellence. Shared values. Shared standards. Mutual accountability and inspiration.</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon">🌱</div>
+                            <div class="card-icon">F</div>
                             <h3>Family Legacy</h3>
                             <p>Your commitment becomes your family's foundation. Excellence compounds. Standards become inheritance.</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon">🏆</div>
+                            <div class="card-icon">Y</div>
                             <h3>Youth Development</h3>
                             <p>We develop serious young athletes with elite systems, expert oversight, and community support.</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon">🤝</div>
+                            <div class="card-icon">E</div>
                             <h3>Shared Excellence</h3>
                             <p>Family programs and shared wellness create strength that transcends individuals and lasts generations.</p>
                         </div>
@@ -1026,6 +1135,49 @@
                     <p style="margin-top: 2rem; color: var(--accent-gold); font-size: 0.9rem; letter-spacing: 1px;">© 2025 Forte Wellness. All rights reserved.</p>
                 </div>
             </section>
+        </div>
+    </div>
+
+    <!-- TRAINER APPLICATION MODAL -->
+    <div class="modal" id="trainerAppModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeTrainerApp()">✕</button>
+            <h2>Join the Forte Network</h2>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                As a trainer in our network, you'll work with our clients while maintaining the Forte standard. We handle client relationships and program oversight. You deliver exceptional training. We pay you directly for sessions delivered. All trainers complete our All In University Certification to ensure we maintain elite standards across the country.
+            </p>
+            <form id="trainerAppForm" action="https://formspree.io/f/xvzzzjbq" method="POST">
+                <div class="form-group">
+                    <label for="trainer-name">Your Name *</label>
+                    <input type="text" id="trainer-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="trainer-email">Email *</label>
+                    <input type="email" id="trainer-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="trainer-phone">Phone *</label>
+                    <input type="tel" id="trainer-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="trainer-location">Location / City *</label>
+                    <input type="text" id="trainer-location" name="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="trainer-experience">Years of Training Experience *</label>
+                    <input type="text" id="trainer-experience" name="experience" required>
+                </div>
+                <div class="form-group">
+                    <label for="trainer-specialties">Your Specialties (strength, mobility, sport-specific, etc.) *</label>
+                    <textarea id="trainer-specialties" name="specialties" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="trainer-bio">Why You Want to Join Forte *</label>
+                    <textarea id="trainer-bio" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 1.2rem; text-align: center; letter-spacing: 0.5px;">We'll review your application and be in touch within 48 hours.</p>
         </div>
     </div>
 
@@ -1108,8 +1260,13 @@
             }, 1200);
         }
 
-        // Keyboard navigation
+        // Keyboard navigation - allow space in form inputs
         document.addEventListener('keydown', (e) => {
+            // Don't prevent space if user is typing in an input or textarea
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return;
+            }
+
             if (e.key === 'ArrowDown' || e.key === ' ') {
                 e.preventDefault();
                 if (currentPageIndex < pages.length - 1) {
@@ -1123,48 +1280,14 @@
             }
         });
 
-        // Smooth trackpad scrolling
-        let accumulatedScroll = 0;
-        let lastScrollTime = 0;
-        let scrollDirection = null;
-
+        // Allow wheel scroll to reach footer page
         window.addEventListener('wheel', (e) => {
             if (isTransitioning) return;
-
-            const now = Date.now();
-            const timeSinceLastScroll = now - lastScrollTime;
-
-            if (timeSinceLastScroll > 500) {
-                accumulatedScroll = 0;
-                scrollDirection = null;
-            }
-
-            lastScrollTime = now;
-
-            const currentDirection = e.deltaY > 0 ? 'down' : 'up';
             
-            if (scrollDirection !== null && scrollDirection !== currentDirection) {
-                accumulatedScroll = 0;
-            }
-            
-            scrollDirection = currentDirection;
-            accumulatedScroll += Math.abs(e.deltaY);
-
-            if (accumulatedScroll >= 200) {
+            // Only trigger page change if we're trying to go forward from last content page
+            if (currentPageIndex === pages.length - 2 && e.deltaY > 0) {
                 e.preventDefault();
-                
-                if (e.deltaY > 0) {
-                    if (currentPageIndex < pages.length - 1) {
-                        goToPage(currentPageIndex + 1);
-                    }
-                } else {
-                    if (currentPageIndex > 0) {
-                        goToPage(currentPageIndex - 1);
-                    }
-                }
-                
-                accumulatedScroll = 0;
-                scrollDirection = null;
+                goToPage(currentPageIndex + 1);
             }
         }, { passive: false });
 
@@ -1190,9 +1313,36 @@
             }, 800);
         });
 
+        // Trainer Application Modal
+        const trainerAppModal = document.getElementById('trainerAppModal');
+
+        function openTrainerApp() {
+            trainerAppModal.classList.add('active');
+        }
+
+        function closeTrainerApp() {
+            trainerAppModal.classList.remove('active');
+            document.getElementById('trainerAppForm').reset();
+        }
+
+        // Handle trainer form submission
+        document.getElementById('trainerAppForm').addEventListener('submit', function(e) {
+            const form = this;
+            const name = document.getElementById('trainer-name').value;
+            
+            setTimeout(() => {
+                alert(`Thank you, ${name}!\n\nYour trainer application has been received.\n\nWe'll review your qualifications and be in touch within 48 hours.`);
+                form.reset();
+                closeTrainerApp();
+            }, 800);
+        });
+
         window.onclick = function(event) {
             if (event.target == inquiryModal) {
                 closeInquiry();
+            }
+            if (event.target == trainerAppModal) {
+                closeTrainerApp();
             }
         }
     </script>
