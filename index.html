@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,12 +46,44 @@
         /* ===== HEADER ===== */
         header {
             position: fixed;
-            top: 2rem;
-            right: 3rem;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(10, 8, 5, 0.98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .header-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            position: absolute;
+            left: 2rem;
+            top: 12px;
+            z-index: 1002;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .header-logo-container:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .header-logo-icon {
+            height: 78px;
+            width: auto;
         }
 
         .menu-button {
+            position: absolute;
+            right: 2rem;
             background: var(--accent-gold);
             color: var(--primary-dark);
             padding: 0.9rem 2.2rem;
@@ -66,6 +99,7 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
+            z-index: 1001;
         }
 
         .menu-button:hover {
@@ -125,27 +159,12 @@
             visibility: hidden;
             transition: all 0.4s ease;
             z-index: 999;
+            overflow-y: auto;
         }
 
         nav.active {
             opacity: 1;
             visibility: visible;
-        }
-
-        .logo {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: var(--primary-dark);
-            text-transform: uppercase;
-            margin-bottom: 3rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .logo:hover {
-            color: var(--accent-gold);
         }
 
         nav ul {
@@ -216,6 +235,8 @@
             height: 100vh;
             position: relative;
             overflow: hidden;
+            padding-top: 80px;
+            box-sizing: border-box;
         }
 
         .pages-container {
@@ -305,6 +326,20 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             opacity: 1;
+        }
+
+        .hero-forte-text {
+            font-family: 'Playfair Display', serif !important;
+            font-size: 5rem !important;
+            font-weight: 900 !important;
+            letter-spacing: 10px !important;
+            color: #ffffff !important;
+            text-transform: uppercase !important;
+            margin-bottom: 2rem !important;
+            margin-top: -10rem !important;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+            opacity: 1 !important;
+            line-height: 1 !important;
         }
 
         .hero h1 {
@@ -767,6 +802,7 @@
             margin-bottom: 1.5rem;
             font-weight: 500;
         }
+        
         .nav-dots {
             position: fixed;
             right: 3rem;
@@ -820,8 +856,18 @@
 
         @media (max-width: 640px) {
             header {
-                top: 1rem;
+                height: 70px;
+            }
+
+            .header-logo {
+                font-size: 1.4rem;
+                left: 1rem;
+            }
+
+            .menu-button {
                 right: 1rem;
+                padding: 0.7rem 1.5rem;
+                font-size: 0.7rem;
             }
 
             .page {
@@ -845,6 +891,9 @@
 <body>
     <!-- HEADER -->
     <header>
+        <div class="header-logo-container" onclick="goToPage(0); return false;">
+            <svg class="header-logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="150 150 200 200"><defs><style>.forte-logo{fill:#fff;}</style></defs><g><polygon class="forte-logo" points="220.45 200.27 228.83 183.69 272.27 183.69 264.08 200.27 220.45 200.27"/><polygon class="forte-logo" points="247.11 207.21 241.81 207.21 241.8 207.22 216.84 207.22 209.79 221.45 217.78 237.36 224.54 223.14 239.9 223.14 247.11 207.21"/><polygon class="forte-logo" points="276.35 233.48 267.97 250.07 224.53 250.07 232.72 233.48 276.35 233.48"/><polygon class="forte-logo" points="249.69 226.54 254.99 226.54 255 226.53 279.96 226.53 287.01 212.31 279.02 196.39 272.26 210.62 256.9 210.62 249.69 226.54"/></g></svg>
+        </div>
         <button class="menu-button" id="menuBtn">
             <div class="menu-icon"></div>
         </button>
@@ -852,9 +901,8 @@
 
     <!-- NAVIGATION -->
     <nav id="menu">
-        <div class="logo" onclick="closeMenu(); goToPage(0);">Forte</div>
         <ul>
-            <li><a href="#" onclick="closeMenu(); goToPage(0); return false;">Home</a></li>
+            <li><a href="#" onclick="closeMenu(); goToPage(0); return false;" style="color: var(--accent-gold); font-weight: 700;">Home</a></li>
             <li><a href="#" onclick="closeMenu(); goToPage(1); return false;">Philosophy</a></li>
             <li><a href="#" onclick="closeMenu(); goToPage(2); return false;">Spaces & Design</a></li>
             <li><a href="#" onclick="closeMenu(); goToPage(3); return false;">Elite Team</a></li>
@@ -875,6 +923,7 @@
             <!-- HERO -->
             <section class="page hero">
                 <div class="hero-content">
+                    <p class="hero-forte-text">Forte</p>
                     <p class="hero-tag">The Obvious Choice for Serious People</p>
                     <h1>Your Elite<br>Health Management Team</h1>
                     <p class="hero-subtitle">We manage your complete health. Curated team of professionals handles training, nutrition, recovery, sleep, biomarkers, and accountability. One integrated system. One focus: your transformation.</p>
@@ -1179,7 +1228,7 @@
         </div>
     </div>
 
-    <!-- MODAL -->
+    <!-- INQUIRY MODAL -->
     <div class="modal" id="inquiryModal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeInquiry()">✕</button>
